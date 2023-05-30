@@ -48,7 +48,7 @@ def gender_mean_bar(gender, df):
     plt.bar(mean_values.index, mean_values.values, color=colors)
     plt.xlabel('Emotion')
     plt.ylabel('Mean Value')
-    plt.title(f"Mean emotion probability of {gender.lower()} superheroes' basckstory")
+    plt.title(f"Mean emotion probability of {gender.lower()} superheroes' backstory")
     # save the plot as a png file
     plt.savefig(os.path.join('plots', f'{gender}_barplot.png'))
     plt.clf()
