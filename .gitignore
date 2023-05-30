@@ -163,3 +163,5 @@ cython_debug/
 data/*
 !data/kaggle.sh
 notes.ipynb
+plots.ipynb
+notes_2.ipynb

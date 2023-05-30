@@ -10,8 +10,6 @@ def main():
     # load the data
     df = clean_load()
 
-    df = df[:100]
-
     # load the emotion model
     feelings = pipeline("text-classification", 
                             model="j-hartmann/emotion-english-distilroberta-base", 
@@ -24,7 +22,7 @@ def main():
     df[['anger', 'disgust', 'fear', 'joy', 'neutral', 'sadness', 'surprise']] = df['history_text'].progress_apply(lambda x: pd.Series(emotion(x, feelings)))
 
     # save the dataframe to a csv file
-    df.to_csv(os.path.join('data', 'mini_emotions.csv'), index=False)
+    df.to_csv(os.path.join('data', 'emotions.csv'), index=False)
 
 if __name__ == '__main__':
     main()

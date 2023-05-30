@@ -90,6 +90,6 @@ def clean_load():
     df = df.dropna(subset=['gender'])
 
     # save the dataframe to a csv file
-    df.to_csv(os.path.join('data', 'superheroes_nlp_dataset.csv'), index=False)
+    df.to_csv(os.path.join('data', 'clean_superheroes_nlp_dataset.csv'), index=False)
 
     return df
