@@ -1,6 +1,15 @@
-  # Pokémon type classification
+# Pokémon type classification
 ## Intro
+A lot of people enjoy superhero movies, but some individuals take their love for superheroes to the next level by creating a [database](https://www.superherodb.com/) that contains information on over 6200 superheroes, including their power scores and origin stories. As someone who equally loves superheroes and data science, this is fantastic news for me. I am particularly fascinated by superhero origin stories, which seem to follow a set template:
 
+1) The person starts with a relatively normal life
+2) Something tragic happens
+3) The person gains superpowers
+4) The superhero must fight evil and come to terms with the tragic event
+
+This made me wonder if this pattern would be evident by extracting emotions from these backstories. Fortunately, thanks to the power of machine learning, I can do just that! In this repository, you will find the necessary code to determine the most probable emotions in your favorite superheroes' backstories, using a [transformer from huggingface.](https://huggingface.co/j-hartmann/emotion-english-distilroberta-base)
+
+Now, I must confess that I have some grievances with the superhero industry. The lack of female superheroes is especially bothersome to me. In the presented [dataset from kaggle](https://www.kaggle.com/datasets/jonathanbesomi/superheroes-nlp-dataset), only 23% of the superheroes are female. This tendency to treat genders differently led me to question whether male and female heroes have different backstories. To address this, I have included a script that calculates the mean probability of each emotion across male and female backstories. The results are presented at the end of this readme. Enjoy!
 
 ## How to run
 
@@ -35,9 +44,9 @@ In plots you will find a bar plot showing emotion probabilities for individual s
   ├── plots
   │   └── ..
   ├── src
-  │   ├── get_emotions.py         <- Script producing plots and report
-  │   ├── plot_a_gender.py        <- Script wrangling data
-  │   └── plot_a_super.py         <- Script training and saving the model
+  │   ├── get_emotions.py         <- Script extracting emotions
+  │   ├── plot_a_gender.py        <- Script plotting for gender
+  │   └── plot_a_super.py         <- Script plotting for an individual hero
   ├── utils
   │   ├── fun.py                  <- Various functions utilised in scripts
   │   └── plot.py                 <- Functions specifically used for plotting
@@ -45,17 +54,17 @@ In plots you will find a bar plot showing emotion probabilities for individual s
   ├── LICENSE
   ├── README.md
   ├── requirements.txt            <- .txt containing needed modules and versions
-* ├── run.sh                      <- Script that runs the ML within the virtual environment
+* ├── run.sh                      <- Script that runs the code within the virtual environment
   └── setup.sh                    <- Script that sets up the virtual environment and downloads data
   
 * files that you can change if you wish to customise the code.
 ```
 
 # Customising
-
+The script plot_a_super.py can be run with a --name flag, and produces a barplot with the most likely emotions of the heros backstory. Look through the "name" column of the emotions.csv to find the name of your favourite hero. Note: You just need to run the get_emotion.py script once, so modify the run.sh by commenting out [line 5]() if you want plots for multiple heroes.
 
 ## Evaluation
 
 
 
-###### This repository is part of a portfolio exam in [Visual Analytics](https://kursuskatalog.au.dk/en/course/115695/Visual-Analytics), which is one of the courses of the supplementary subject [Cultural Data Science at Aarhus University](https://bachelor.au.dk/en/supplementary-subject/culturaldatascience/). You can see an overview of all the projects I have completed for this subject [here](https://github.com/AddiH/Cultural_Data_Science). MIT license applies. 
+###### This repository is part of a portfolio exam in [Language Analytics](https://kursuskatalog.au.dk/en/course/115693/Language-Analytics), which is one of the courses of the supplementary subject [Cultural Data Science at Aarhus University](https://bachelor.au.dk/en/supplementary-subject/culturaldatascience/). You can see an overview of all the projects I have completed for this subject [here](https://github.com/AddiH/Cultural_Data_Science). MIT licence applies. 
