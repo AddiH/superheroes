@@ -6,6 +6,9 @@ import numpy as np
 
 
 def hero_bar(hero_name, df):
+    '''
+    Takes the name of a hero and the emotions.csv df and returns a barplot with the most likely emotions for that heros history_text
+    '''
     # subset the dataframe to get the hero
     hero = df[df['name']==hero_name]
 
@@ -32,6 +35,9 @@ def hero_bar(hero_name, df):
     return None
 
 def gender_mean_bar(gender, df):
+    '''
+    Returns a barplot with the mean value of emotions on a subset of df, based on gender.
+    '''
     #Choose only heroes where the gender column is x
     heroes = df[df['gender'] == gender]
 
@@ -54,6 +60,9 @@ def gender_mean_bar(gender, df):
     plt.clf()
 
 def combined(df):
+    '''
+    Returns a barplot with female and male superheroes data next to each other.
+    '''
     # Group the data by gender and calculate the mean values for each emotion
     gender_mean_values = df.groupby('gender')[['anger', 'disgust', 'fear', 'joy', 'neutral', 'sadness', 'surprise']].mean()
 

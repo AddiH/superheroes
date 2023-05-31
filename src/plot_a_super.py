@@ -22,7 +22,7 @@ def main():
     args = input_parse()
     # read the df
     df = pd.read_csv(os.path.join('data','emotions.csv'))
-    # generate text
+    # plot for hero
     hero_bar(args.name, df)
 
 if __name__ == '__main__':
