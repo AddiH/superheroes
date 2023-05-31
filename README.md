@@ -1,4 +1,4 @@
-# The emotional fingerprint of superheroes backstories
+# The emotional fingerprint of superheroes' backstories
 ## Intro
 A lot of people enjoy superhero movies, but some individuals take their love for superheroes to the next level by creating a [database](https://www.superherodb.com/) that contains information on over 6200 superheroes, including their power scores and origin stories. As someone who equally loves superheroes and data science, this is fantastic news for me. I am particularly fascinated by superhero origin stories, which seem to follow a set template:
 
