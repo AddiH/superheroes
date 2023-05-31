@@ -88,5 +88,5 @@ def combined(df):
     # Add a legend
     plt.legend()
     # Save the plot as a png file
-    plt.savefig(os.path.join('plots','combined_barplot.png'))
+    plt.savefig(os.path.join('plots','Combined_barplot.png'))
     plt.clf()
