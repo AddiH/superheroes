@@ -1,4 +1,4 @@
-# Pokémon type classification
+# The emotional fingerprint of superheroes backstories
 ## Intro
 A lot of people enjoy superhero movies, but some individuals take their love for superheroes to the next level by creating a [database](https://www.superherodb.com/) that contains information on over 6200 superheroes, including their power scores and origin stories. As someone who equally loves superheroes and data science, this is fantastic news for me. I am particularly fascinated by superhero origin stories, which seem to follow a set template:
 
@@ -7,7 +7,7 @@ A lot of people enjoy superhero movies, but some individuals take their love for
 3) The person gains superpowers
 4) The superhero must fight evil and come to terms with the tragic event
 
-This made me wonder if this pattern would be evident by extracting emotions from these backstories. Fortunately, thanks to the power of machine learning, I can do just that! In this repository, you will find the necessary code to determine the most probable emotions in your favorite superheroes' backstories, using a [transformer from huggingface.](https://huggingface.co/j-hartmann/emotion-english-distilroberta-base)
+This made me wonder if this pattern would be evident by extracting emotions from these backstories. Fortunately, thanks to the power of machine learning, I can do just that! In this repository, you will find the necessary code to determine the most probable emotions in your favourite superheroes' backstories, using a [transformer from huggingface.](https://huggingface.co/j-hartmann/emotion-english-distilroberta-base)
 
 Now, I must confess that I have some grievances with the superhero industry. The lack of female superheroes is especially bothersome to me. In the presented [dataset from kaggle](https://www.kaggle.com/datasets/jonathanbesomi/superheroes-nlp-dataset), only 23% of the superheroes are female. This tendency to treat genders differently led me to question whether male and female heroes have different backstories. To address this, I have included a script that calculates the mean probability of each emotion across male and female backstories. The results are presented at the end of this readme. Enjoy!
 
@@ -60,11 +60,23 @@ In plots you will find a bar plot showing emotion probabilities for individual s
 * files that you can change if you wish to customise the code.
 ```
 
-# Customising
-The script plot_a_super.py can be run with a --name flag, and produces a barplot with the most likely emotions of the heros backstory. Look through the "name" column of the emotions.csv to find the name of your favourite hero. Note: You just need to run the get_emotion.py script once, so modify the run.sh by commenting out [line 5]() if you want plots for multiple heroes.
+## Customising
+The script plot_a_super.py can be run with a --name flag, and produces a barplot with the most likely emotions of the hero's backstory. Look through the "name" column of the emotions.csv to find the name of your favourite hero. Note: You just need to run the get_emotion.py script once, so modify the run.sh by commenting out [line 5]() if you want plots for multiple heroes.
 
 ## Evaluation
+Lets have a look at the most probable emotions of Catwomans backstory:
+![catwoman](plots/Catwoman_barplot.png)
 
+The most likely emotion is fear. If we read just the first line of her origin story, I would say this assessment is pretty spot on:
+> *"Selina Kyle's early life was defined by tragedy. When she was just a girl, her brutalized mother Maria committed suicide and her violent father Brian drank himself to death not long after."*
+
+Lets have a look at a male superhero, Iron Man:
+
+![ironman](plots/Iron_Man_barplot.png)
+
+ The probabilities are quite similar, however Mr. Starks backstory seem to contain more rage. However, if we compare the average probabilities of emotions across gender, we see no large differences. Of course, a statistical analysis would be needed to investigate whether any significant differences are present:
+ 
+ ![genders](plots/Combined_barplot.png)
 
 
 ###### This repository is part of a portfolio exam in [Language Analytics](https://kursuskatalog.au.dk/en/course/115693/Language-Analytics), which is one of the courses of the supplementary subject [Cultural Data Science at Aarhus University](https://bachelor.au.dk/en/supplementary-subject/culturaldatascience/). You can see an overview of all the projects I have completed for this subject [here](https://github.com/AddiH/Cultural_Data_Science). MIT licence applies. 
