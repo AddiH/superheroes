@@ -3,6 +3,10 @@ import pandas as pd
 from transformers import pipeline
 
 def sentiment(text, function):
+    '''
+    Returns sentiment for input text. If the text is longer than 512 tokens, the text will be processed in chuncks of 512,
+    and the result is the weighted sum of results from the chuncks. The function must be a transformers pipeline.
+    '''
     weighted_positive_probs = 0 # holds result
     weighted_negative_probs = 0
     chunked_texts = [] # Initialize an empty list to hold the chunked texts
@@ -34,6 +38,11 @@ def sentiment(text, function):
 
 
 def emotion(text, function):
+    '''
+    Returns emotions for input text. If the text is longer than 512 tokens, the text will be processed in chuncks of 512,
+    and the result is the weighted sum of results from the chuncks. The function must be a transformers pipeline.
+    '''
+    # holds results:
     anger = 0
     disgust = 0
     fear = 0
@@ -41,20 +50,21 @@ def emotion(text, function):
     neutral = 0
     sadness = 0
     surprise = 0
-
     chunked_texts = [] 
-    chunk_size = 512 
-    text_length = len(text)
 
+    chunk_size = 512 # max length the model can take
+    text_length = len(text) # length of input text
+
+    # loop over the text, making chucks of size 512. Last chuck will be whatever is left 
     for i in range(0, text_length, chunk_size): 
         chunk = text[i:i + chunk_size]
         chunked_texts.append(chunk) 
 
     for chunk in chunked_texts: 
-        result = function(chunk) 
-        weight = len(chunk) / text_length
+        result = function(chunk) # get result from pipeline
+        weight = len(chunk) / text_length # the weight the chunck has on final result
 
-        for item in result[0]:
+        for item in result[0]:# get every score
             if item['label'] == 'anger':
                 anger_score = item['score']
             elif item['label'] == 'disgust':
@@ -70,6 +80,7 @@ def emotion(text, function):
             elif item['label'] == 'surprise':
                 surprise_score = item['score']
             
+        # add the scores from the chunck to the results from the entire text
         anger = anger + (anger_score * weight)
         disgust = disgust + (disgust_score * weight)
         fear = fear + (fear_score * weight)
@@ -81,6 +92,10 @@ def emotion(text, function):
     return anger, disgust, fear, joy, neutral, sadness, surprise
 
 def clean_load():
+    '''
+    Loads the superhero dataset, and drops rows with a na value in columns "history text" or "gender" as data in these
+    are needed for the analysis.
+    '''
     # load the csv file
     df = pd.read_csv(os.path.join('data', 'superheroes_nlp_dataset.csv'))
 
